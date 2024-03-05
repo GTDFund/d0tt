@@ -19,7 +19,7 @@ use RuntimeException;
 
 class PublicFileForm
 {
-    public static function display()
+    public static function display(): void
     {
         if (isset($_POST['submit_file'])) {
             if (\PFBC\Form::isValid($_POST['submit_file'])) {
@@ -62,9 +62,9 @@ class PublicFileForm
     /**
      * Get the full file path and prevent path traversal and null byte attacks.
      *
-     * @return bool|string The canonicalized absolute path, or FALSE on failure.
+     * @return string|bool The canonicalized absolute path, or FALSE on failure.
      */
-    private static function getRealPath()
+    private static function getRealPath(): string|bool
     {
         $sFullPath = PH7_PATH_ROOT . $_GET['file'];
         $mRealPublicPath = realpath(PH7_PATH_ROOT);
@@ -79,7 +79,7 @@ class PublicFileForm
         return $mRealFullPath;
     }
 
-    private static function showErrorMessage(RuntimeException $oExcept)
+    private static function showErrorMessage(RuntimeException $oExcept): void
     {
         printf('<p class="col-md-6 col-md-offset-4 red">%s</p>', $oExcept->getMessage());
     }

@@ -1,11 +1,11 @@
 <?php
 /**
  * @author         Pierre-Henry Soria <hello@ph7builder.com>
- * @copyright      (c) 2015-2019, Pierre-Henry Soria. All Rights Reserved.
+ * @copyright      (c) 2015-2023, Pierre-Henry Soria. All Rights Reserved.
  * @license        MIT License; See LICENSE.md and COPYRIGHT.md in the root directory.
  * @package        PH7 / App / System / Module / Api / Controller
- * @link           http://ph7builder.com
- * @link           http://github.com/pH7Software/pH7Builder-HTTP-REST-Push-Data
+ * @link           https://ph7builder.com
+ * @link           https://github.com/pH7Software/pH7Builder-HTTP-REST-Push-Data
  */
 
 namespace PH7;
@@ -19,14 +19,9 @@ use PH7\JustHttp\StatusCode;
 
 class UserController extends MainController
 {
-    /** @var UserCore */
-    protected $oUser;
-
-    /** @var UserCoreModel */
-    protected $oUserModel;
-
-    /** @var Validate */
-    protected $oValidate;
+    protected UserCore $oUser;
+    protected UserCoreModel $oUserModel;
+    protected Validate $oValidate;
 
     public function __construct()
     {
@@ -37,7 +32,7 @@ class UserController extends MainController
         $this->oValidate = new Validate;
     }
 
-    public function createAccount()
+    public function createAccount(): void
     {
         if ($this->oRest->getRequestMethod() !== HttpRequest::METHOD_POST) {
             $this->oRest->response('', StatusCode::NOT_ACCEPTABLE);
@@ -69,6 +64,7 @@ class UserController extends MainController
                 'zip_code',
                 'description'
             ];
+
             if (!$this->areFieldsExist($aData, $aRequiredFields)) {
                 $aResults = [
                     'status' => 'failed',
@@ -127,7 +123,7 @@ class UserController extends MainController
         }
     }
 
-    public function login()
+    public function login(): void
     {
         if ($this->oRest->getRequestMethod() !== HttpRequest::METHOD_POST) {
             $this->oRest->response('', StatusCode::NOT_ACCEPTABLE);
@@ -161,10 +157,8 @@ class UserController extends MainController
      * Get profile data from their ID.
      *
      * @param int $iId Profile ID (ID has to end with a trailing slash "/" when calling this resource from the API URI)
-     *
-     * @return void
      */
-    public function user($iId)
+    public function user($iId): void
     {
         if ($this->oRest->getRequestMethod() !== HttpRequest::METHOD_GET) {
             $this->oRest->response('', StatusCode::NOT_ACCEPTABLE);
@@ -191,10 +185,11 @@ class UserController extends MainController
      * @param string $sOrder
      * @param int|null $iOffset
      * @param int|null $iLimit
-     *
-     * @return void
      */
-    public function users($sOrder = SearchCoreModel::LAST_ACTIVITY, $iOffset = null, $iLimit = null)
+    public function users(
+        string $sOrder = SearchCoreModel::LAST_ACTIVITY,
+        ?int $iOffset = null,
+        ?int $iLimit = null): void
     {
         if ($this->oRest->getRequestMethod() !== HttpRequest::METHOD_GET) {
             $this->oRest->response('', StatusCode::NOT_ACCEPTABLE);
@@ -218,10 +213,13 @@ class UserController extends MainController
      * @param string $sOrder
      * @param int|null $iOffset
      * @param int|null $iLimit
-     *
-     * @return void
      */
-    public function usersFromLocation($sCountryCode, $sCity, $sOrder = SearchCoreModel::LAST_ACTIVITY, $iOffset = null, $iLimit = null)
+    public function usersFromLocation(
+        string $sCountryCode,
+        string $sCity,
+        string $sOrder = SearchCoreModel::LAST_ACTIVITY,
+        ?int $iOffset = null,
+        ?int $iLimit = null): void
     {
         if ($this->oRest->getRequestMethod() !== HttpRequest::METHOD_GET) {
             $this->oRest->response('', StatusCode::NOT_ACCEPTABLE);
@@ -248,11 +246,9 @@ class UserController extends MainController
     }
 
     /**
-     * @param int $iProfileId
-     *
      * Delete a user
      */
-    public function deleteUser($iProfileId)
+    public function deleteUser(int $iProfileId): void
     {
         if ($this->oRest->getRequestMethod() !== HttpRequest::METHOD_DELETE) {
             $this->oRest->response('', StatusCode::NOT_ACCEPTABLE);
@@ -262,13 +258,7 @@ class UserController extends MainController
         }
     }
 
-    /**
-     * @param array $aData
-     * @param array $aRequiredElements
-     *
-     * @return bool
-     */
-    private function areFieldsExist(array $aData, array $aRequiredElements)
+    private function areFieldsExist(array $aData, array $aRequiredElements): bool
     {
         foreach ($aRequiredElements as $sName) {
             if (empty($aData[$sName])) {

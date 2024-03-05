@@ -27,10 +27,10 @@ With **[pH7Builder](https://sourceforge.net/projects/ph7socialdating/files/lates
 Why your business has to be under the mercy of others?
 
 Unlike cloud or SaaS solutions, by choosing pH7Builder, you have the complete control of your website, database and your users!
-You get and own all data and files, hosted to your own server (the one you choose) ✌️
+You get and own all data and files hosted to your own server (the one you choose) ✌️
 
 
-👉 Convinced by the software? ☕️ You could help by **[offering me a coffee](https://www.buymeacoffee.com/ph7cms)**? - and boost the software development at the same time! 🚀🤗
+👉 Convinced by the software? ☕️ You could boost the software development by **[offering a coffee](https://www.buymeacoffee.com/ph7cms)**! 🚀🤗
 
 [![Ko Fi - Offer Me A Flat White](static/img/kofi-logo.png)](https://ko-fi.com/phenry) [![Buy Me A Coffee](static/img/buymeacoffee-logo.svg)](https://www.buymeacoffee.com/ph7cms)
 
@@ -61,7 +61,9 @@ You get and own all data and files, hosted to your own server (the one you choos
 
 It is designed with the **KISS** principle in mind, and the whole source code can be read and understood in minutes. For better flexibility, the software uses **PDO** (PHP Data Objects) abstraction which allows the choice of the database. The principle of development is **DRY** (Don't Repeat Yourself) aimed at reducing repetition of information of all kinds (no duplicate code) and **YAGNI** principle to avoid unused code/not needed functionality in the software.
 
-This Free and Open Source **Social Dating Site Builder** wants to be low resource-intensive, powerful, stable and secure. The software also comes with 40+ system modules and is based on **[pH7Framework](https://github.com/pH7Software/pH7-Social-Dating-CMS/tree/17.x/_protected/framework#ph7framework)** *(written specifically for this project)* that has over 52 packages.
+This Free and Open Source **Social Dating Site Builder** aims to be low resource-intensive, powerful, stable and secure.
+
+Based on **[pH7Framework](https://github.com/pH7Software/pH7-Social-Dating-CMS/tree/18.x/_protected/framework#ph7framework)**, a framework written specifically for this project, the CMS also comes with 40 system modules ready to be used.
 
 *To summarize, **pH7Builder** gives you **the perfect ingredients** to create the **best online dating service** or **social networking** website on the World Wide Web!*
 

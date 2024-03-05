@@ -1,7 +1,7 @@
 <?php
 /**
  * @author           Pierre-Henry Soria <hello@ph7builder.com>
- * @copyright        (c) 2012-2022, Pierre-Henry Soria. All Rights Reserved.
+ * @copyright        (c) 2012-2023, Pierre-Henry Soria. All Rights Reserved.
  * @license          MIT License; See LICENSE.md and COPYRIGHT.md in the root directory.
  * @package          PH7 / Install / Controller
  */
@@ -593,6 +593,7 @@ class InstallController extends Controller
         if (is_file($sConstantsPath)) {
             @require_once $sConstantsPath;
 
+            // make sure we don't send multiple emails, in case the page gets refreshed
             if ($this->canEmailBeSent()) {
                 $this->sendWelcomeEmail();
 
@@ -634,7 +635,8 @@ class InstallController extends Controller
     }
 
     /**
-     * Verify if the email can be sent (has all necessary global variables).
+     * Verify if the email can be sent (has all necessary global variables)
+     * to assure only one email is send and not multiple ones.
      *
      * @return bool
      */
@@ -769,6 +771,9 @@ class InstallController extends Controller
         }
     }
 
+    /**
+     * Check if the user has ticked the license agreement.
+     */
     private function isAgreementsAgreed(): bool
     {
         return
@@ -787,7 +792,7 @@ class InstallController extends Controller
     }
 
     /**
-     * Require & Initialize the classes.
+     * Include and Initialize the needed PHP classes.
      */
     private function initializeClasses(): void
     {
